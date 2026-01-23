@@ -12,9 +12,9 @@ Goals:
 
 Start out at https://github.com/signup:
 
-1. ![Complete the form. You will be asked to verify your email address -- Go check your email for the verification link.](img/01-gh-signup-filled.png)
+![Complete the form. You will be asked to verify your email address -- Go check your email for the verification link.](img/01-gh-signup-filled.png)
 
-2. ![When you have created your account, you should see this success alert.](img/02-gh-signup-success.png)
+![When you have created your account, you should see this success alert.](img/02-gh-signup-success.png)
 	
 ## Fill out your GitHub profile (optional, but recommended)
 
