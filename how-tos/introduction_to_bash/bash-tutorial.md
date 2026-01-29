@@ -1,0 +1,189 @@
+# bash for file management
+## Objectives:
+In reproducible scientific computing, the goal is to permit someone to recreate our scientific workflows step by step. This tutorial will help you to build reproducible scientific workflows by teaching you to interact with your computer using text commands, instead of your mouse and graphical user interfaces. These text commands represent a record of what software was used, what operations were run, and on what data that is *automatable*, or capable of running without human interaction.
+
+By the end of this tutorial you will be able to:
+1. Define terminal, shell, and bash; and explain why we use them for scientific computing.
+2. Open a terminal window on the DIWA DataLab.
+3. Identify text-based file paths to documents on your computer.
+4. Interpret file path structure of documents/data on online geodatabases.
+5. Run bash commands to navigate files on your computer.
+
+Please see the companion file "bash-cheat-sheet.md" to keep track of these common commands.
+
+## Part 1: The language of computers
+First, some definitions.
+* **Terminal**: A terminal is an input/output device or software interface that allows a user to communicate with an operating system or remote computer using typed commands rather than graphical controls. In the DIWA DataLab, when we open a **terminal**, we open a window based-interface to type commands that emmulate common interactions you have with your computer using a mouse.
+* **Shell**: The word shell in this context has two meanings. First, and most commonly used, the shell is the language that you type in the terminal. It is the program that interprets commands to your computer. Just to make things confusing, shell also refers to a specific type of shell (this would be similar to someone naming a car brand "Car"). If you have a Windows operating system, your shell is called *CMD*. If you have a Mac or Linux operating system, your shell is called "bash." Our DIWA DataLab has a Linux operating system, so we will learn commands to the bash shell.
+* **CLI (Command Line Interface)**: On your laptop or PC, there are two ways to interact with your shell. If you are typing commands in to the terminal using your keyboard, you are interacting with your shell's CLI.
+* **GUI (Graphical User Interface)**: The other way to interact with your shell involves a lot more use of your computer's mouse. If you are navigating files and running software by pointing and clicking on graphic icons displayed on your screen, you are using your shell's GUI (note GUI is pronounced like the English word "gooey")
+
+The **CLI** and **GUI** are two different ways of interacting with your shell, but they do the same thing. Every time you point and click on an icon to complete a task on your computer, there is a corresponding text command that could be typed into the **CLI**, achieving the same result. 
+
+*Figure 1.1: A "teletypewriter" was the first kind of terminal. Rather than a screen you'd have a literal typewriter in front of you. When you type on it, you're seeing the text on a piece of paper AND inputting that text into a computer. When that computer replies, you'll see the typewriter automatically type on the same paper.*
+
+### Shells in scientific computing
+To recap, the **shell** is the program that takes commands and gives them to your computer (your computer’s language).
+
+There is a **shell** named shell, also known as Unix or sh, which is the most common language spoken by computers.The **shell** is the original Unix command interpreter (dating back to the 1970s).
+
+**Bash**, was released in 1989, is a later, GNU-developed (aka open source) shell that extended and standardized earlier shells like `sh` with more features and scripting capabilities.
+
+*Quick punny title interlude: Bourne Again SHell gives a cheeky nod the Stephen Bourne, who originally developed shell, and suggests that it was "born again" with new features. One of this "new" features is its "GNU-ness". Here, GNU (pronounced like the English word "new") stands for “GNU’s Not Unix” — a recursive acronym coined to emphasize that while GNU is Unix-like, it is completely free software and not derived from the proprietary Unix code.*
+
+Our DIWA DataLab, like most high performance computing/scientific computing systems, speaks *bash*. We pick this GNU shell because we care a lot about this free and open source component.
+
+Because *bash* was developed from *shell*, *bash* can always speak *shell*, but *shell* doesn't have all the commands you can access with *bash*. Still, nowadays ”shell script” and “bash script” are used interchangeably; assume “sh” = “bash.”
+
+As mentioned above, Windows computers have their own shell called *CMD.* *CMD* doesn’t speak *Bash*, and *Bash* doesn’t speak *CMD*. This because CMD is a proprietary shell: it generates file types that can only be read by Windows machines. Bash is an open-source shell, it generates file types that can be read by all machines (including Windows)
+
+**Why does this proprietary verses open source thing matter (keywords: version control and reproducible research)?**
+
+### Common pitfalls you might encounter moving data/files/code developed in a Windows OS to a Linux OS (like our DIWA DataLab)
+These differences between bash and cmd means that Windows users might encounter some unexpected translation issues when they move files to a scientific computing. Common things to look out for can be found on our [windows-to-linux-cheatsheet](https://github.com/DigitalWaters-fi/community/blob/main/how-tos/introduction_to_bash/windows-to-linux-cheatsheet.md)
+
+
+## Part 2: getting to know your computer through terminal
+### To access the terminal (CLI for your shell) on your computer:
+* WINDOWS: Press Windows Key + r, type “cmd”, Enter
+* Mac: Press Command + space, type “terminal”, Enter
+* Ubuntu (Linux): Press Ctrl + Alt + T
+* DIWA DataLab: in a Notebook image, File > New > Terminal
+
+
+*Figure 2.1: Accessing terminal in DIWA DataLab*
+
+### Using terminal to understand your computer system:
+In a Microsoft or Mac, you can use "Settings" and either "Task Manager" or "Activity Monitory" to learn important information about the hardware type, hardware usage, OS type, and software settings on your computer. Here is a quick walk through of bash commands that let you get similar information.
+
+#### Check what shell you are running:
+If you type the following text into your terminal, it will tell you which shell you are running 
+
+`echo $SHELL`
+
+*Figure 2.2: On the DIWA DataLab, our shell is *bash*
+
+
+#### Check available storage"
+To show disk usage for all mounted filesystems
+
+`df -h`
+
+To show the size of files and directories (in your current directory, to see what that means see "File Management" below)
+
+`du -sh *`
+
+
+#### Check available RAM and system memory
+Show memory usage in human-readable format
+
+`free -h`
+
+Show detailed memory and swap usage
+
+`cat /proc/meminfo`
+
+#### Check your processers
+Show CPU information
+`lscpu`
+
+Check number of CPU cores (logical + physical)
+````
+nproc            # Number of processing units available
+grep -c ^processor /proc/cpuinfo   # Number of logical CPUs
+````
+
+When you are running different modelling applications, we often want to check real-time usage of your CPU to make it is not being overutilized. We can do that here using:
+```
+top              # Interactive process monitor
+````
+To exit this dashboard, type Ctrl + C.
+
+
+#### Check installed software and available commands
+Just like you can use your Start menu to browse software on Windows, you can list all installed packages with the following command:
+````
+dpkg -l
+`````
+Note: these are bash pacakges, not R or python packages. To see python packages, we would type`pip list` For pip installed packages, and `conda list` for conda installed packages. More on this later.
+
+Running software from Terminal is very easy, all you have to do is type in the name of the software. For example, if we type `ipython`, we open ipython, a simple bash-based python IDE:
+
+*Figure 2.4: typing `ipython` opens up ipython software, so now I type commands in using the Python programming language, not Bash. To quit this python application and go back to Bash, I enter the python command `quit`.*
+
+#### Using terminal to navigate files on your computer
+Depending on how you have your operating system configured, the structure software, libraries, and hardware drivers on your computer will be developed more or less automatically. This is not the case for files you make and store yourself! 
+
+When we are using a GUI interface for our computer, we will click on the file explorer to navigate file paths. One of the trickier skills for new programmers is learning how to correctly "write the address" (or filepath) to files and folders that they have created in their compute environment. 
+
+When you are entering commands into Terminal, the working directory is the folder your terminal is “currently in.” Any commands you run (like opening, creating, or moving files) will happen relative to this folder unless you specify a full filepath. If you specify a full file path, it has to be relative to the same directory.
+
+*Figure 2.3: in Terminal, I can see where my computer is referencing filepaths using the text indicated to the left of my cursor. Here, the ~ symbol indicates that I am in my "home" directory. I automatically go to home any time I launch a new server*
+
+I can also see my current working directory using the pwd (print working directory) command
+`pwd`
+
+In bash, we can use the mkdir (make directory) command to create new folders in our environment. So entereing the command:
+`mkdir one`
+in Terminal will create a new folder called "one" in your persistent or long-term storage. This folder called "one" will remain stored in your DIWA DataLab until you delete it: if you quit this server and log back in, it will still be available to you.
+
+In a notebook instance of the DIWA DataLab, the left hand menu bar serves like the graphical "File Explorer" on your Windows or Mac computer. You can use your mouse to explore files you've created. If you look over to the left, you should see a folder called "one" in that left-hand menu bar.
+
+The cd (change directory) command lets you move into a new folder. So entering the command:
+`cd one` 
+
+Will move you into the folder called "one". The filepath indicated to the left of your curser has changed.
+
+Type `pwd` from within the "one' folder and hit enter. What has changed?
+
+Often we are working in nested folders: folders inside of folders. Let's make some nested folders using the following commands, started from working directory "one":
+````
+mkdir two    #make directory called "one"
+cd two       #change to directory "one"
+mkdir three
+cd three
+mkdir four
+cd four
+pwd         #print current working directory
+````
+What is your current working directory? How is this represented in the text next to your cursor? How has your left hand file menu changed? Use your mouse to find your current **working directory**.
+
+`pwd` is telling you your current filepath. If we want to make a file called "data.txt" at this filepath address, we can use the `cat` command.
+
+````
+cat data.txt
+```
+
+You'll notice that the filepath next to your curser has gone away. This is because you are now editing the data.txt file directly. Enter some data"
+
+`````
+Name: Gandolf
+Age: 141
+Address: c/o the Shire
+Ctrl + D      # This last line closes and saves the file, bringing you back to bash
+````
+Using your left file menu, find and open the data.txt file.
+
+To open the notebook in Terminal, type `cat data.txt`. To exit the text file and go back to bash, `Ctrl+D`
+
+#### Change directory shortcuts
+Changing directories is something that you will do often. Here are some common shortcuts to reduce your typing time:
+````
+cd folder      #move to folder
+cd ~           #go home
+cd ..          #go up one level in the file structure
+cd –           #go back to your previous directory
+````
+
+## Part 3: a tragic interlude for justice
+Now we have gotten our start with bash commands, it's time to see how we can use them to automate big file management. To learn what you must do and what is at stake, enter the following command into your terminal:
+
+````
+cd ~                                              # make sure you are in your home directory
+git clone https://github.com/veltman/clmystery    # clone, or copy, a git repository authored by user "veltman" called "clmystery"
+cd clmystery                                      # move into the new cloned repository
+ls                                                # list everything in the currenet working directory
+cat instructions                                  # read the instructions file
+
+
+
