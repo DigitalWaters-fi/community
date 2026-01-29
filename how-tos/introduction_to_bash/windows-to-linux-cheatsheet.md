@@ -1,0 +1,96 @@
+# Windows → Linux Migration Cheat Sheet 
+## Created with assistance from ChatGPT4.1
+Search querry "create a cheat sheet in Markdown that covers Windows to Linux repository migration hygeine, cover things like line endings, ghost characters, encodings, permissions, and any other common pitfalls I've forgotten"
+
+When moving code or data from Windows to Linux, follow these steps to avoid common pitfalls:
+
+
+## 1️⃣ Convert line endings
+Windows uses CRLF (`\r\n`), Linux uses LF (`\n`).
+
+```bash
+# Convert a single file
+dos2unix filename.txt
+
+# Convert all .sh files in current directory
+find . -type f -name "*.sh" -exec dos2unix {} \;
+````
+
+## 2️⃣ Remove ghost / invisible characters
+
+```bash
+# Show non-printable characters
+cat -v filename.txt
+
+# Show hex codes
+hexdump -C filename.txt
+
+# Remove BOM (Byte Order Mark)
+sed -i '1s/^\xEF\xBB\xBF//' filename.txt
+
+# Strip all non-ASCII characters
+tr -cd '\11\12\15\40-\176' < input.txt > output.txt
+```
+
+## 3️⃣ Check filename case
+
+Linux is case-sensitive; Windows is not.
+
+```bash
+ls
+# Verify capitalization matches your code references
+```
+
+## 4️⃣ Fix executable permissions
+
+```bash
+# Make scripts executable
+chmod +x script.sh
+
+# Fix ownership if copied from another user
+chown -R $USER:$USER folder/
+```
+
+## 5️⃣ Check file encoding
+
+Linux prefers UTF-8; Windows may use UTF-16 or legacy codepages.
+
+```bash
+# Detect file encoding
+file filename.txt
+
+# Convert to UTF-8
+iconv -f UTF-16 -t UTF-8 input.txt -o output.txt
+```
+## 6️⃣ Check for hidden/system files
+
+Linux treats files starting with `.` as hidden. Ensure important config files are copied.
+
+```bash
+ls -a
+```
+
+## 7️⃣ Verify scripts
+
+* Use `bash -n script.sh` to check syntax without running
+* Test scripts on Linux before full deployment
+
+```bash
+bash -n script.sh
+```
+## 8️⃣ Check installed dependencies
+
+* Reinstall Python/Node packages or other dependencies for Linux
+
+```bash
+pip install -r requirements.txt
+npm install
+```
+
+### ✅ Quick tips
+
+* Always use **plain text editors**: Vim, Nano, VS Code, or Linux-native editors
+* Save files as **UTF-8 without BOM**
+* Run **`dos2unix` and encoding checks** before executing scripts
+* Verify **case-sensitive filenames and permissions**
+
