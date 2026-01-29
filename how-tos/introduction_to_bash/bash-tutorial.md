@@ -1,20 +1,20 @@
-# bash for file management
+# Bash for file management
 ## Objectives:
 In reproducible scientific computing, the goal is to permit someone to recreate our scientific workflows step by step. This tutorial will help you to build reproducible scientific workflows by teaching you to interact with your computer using text commands, instead of your mouse and graphical user interfaces. These text commands represent a record of what software was used, what operations were run, and on what data that is *automatable*, or capable of running without human interaction.
 
 By the end of this tutorial you will be able to:
-1. Define terminal, shell, and bash; and explain why we use them for scientific computing.
+1. Define terminal, shell, and Bash; and explain why we use them for scientific computing.
 2. Open a terminal window on the DIWA DataLab.
 3. Identify text-based file paths to documents on your computer.
 4. Interpret file path structure of documents/data on online geodatabases.
-5. Run bash commands to navigate files on your computer.
+5. Run Bash commands to navigate files on your computer.
 
-Please see the companion file "bash-cheat-sheet.md" to keep track of these common commands.
+Please see the companion file "Bash-cheat-sheet.md" to keep track of these common commands.
 
 ## Part 1: The language of computers
 First, some definitions.
 * **Terminal**: A terminal is an input/output device or software interface that allows a user to communicate with an operating system or remote computer using typed commands rather than graphical controls. In the DIWA DataLab, when we open a **terminal**, we open a window based-interface to type commands that emmulate common interactions you have with your computer using a mouse.
-* **Shell**: The word shell in this context has two meanings. First, and most commonly used, the shell is the language that you type in the terminal. It is the program that interprets commands to your computer. Just to make things confusing, shell also refers to a specific type of shell (this would be similar to someone naming a car brand "Car"). If you have a Windows operating system, your shell is called *CMD*. If you have a Mac or Linux operating system, your shell is called "bash." Our DIWA DataLab has a Linux operating system, so we will learn commands to the bash shell.
+* **Shell**: The word shell in this context has two meanings. First, and most commonly used, the shell is the language that you type in the terminal. It is the program that interprets commands to your computer. Just to make things confusing, shell also refers to a specific type of shell (this would be similar to someone naming a car brand "Car"). If you have a Windows operating system, your shell is called *CMD*. If you have a Mac or Linux operating system, your shell is called "Bash." Our DIWA DataLab has a Linux operating system, so we will learn commands to the Bash shell.
 * **CLI (Command Line Interface)**: On your laptop or PC, there are two ways to interact with your shell. If you are typing commands in to the terminal using your keyboard, you are interacting with your shell's CLI.
 * **GUI (Graphical User Interface)**: The other way to interact with your shell involves a lot more use of your computer's mouse. If you are navigating files and running software by pointing and clicking on graphic icons displayed on your screen, you are using your shell's GUI (note GUI is pronounced like the English word "gooey")
 
@@ -31,16 +31,16 @@ There is a **shell** named shell, also known as Unix or sh, which is the most co
 
 *Quick punny title interlude: Bourne Again SHell gives a cheeky nod the Stephen Bourne, who originally developed shell, and suggests that it was "born again" with new features. One of this "new" features is its "GNU-ness". Here, GNU (pronounced like the English word "new") stands for “GNU’s Not Unix” — a recursive acronym coined to emphasize that while GNU is Unix-like, it is completely free software and not derived from the proprietary Unix code.*
 
-Our DIWA DataLab, like most high performance computing/scientific computing systems, speaks *bash*. We pick this GNU shell because we care a lot about this free and open source component.
+Our DIWA DataLab, like most high performance computing/scientific computing systems, speaks *Bash*. We pick this GNU shell because we care a lot about this free and open source component.
 
-Because *bash* was developed from *shell*, *bash* can always speak *shell*, but *shell* doesn't have all the commands you can access with *bash*. Still, nowadays ”shell script” and “bash script” are used interchangeably; assume “sh” = “bash.”
+Because *Bash* was developed from *shell*, *Bash* can always speak *shell*, but *shell* doesn't have all the commands you can access with *Bash*. Still, nowadays ”shell script” and “Bash script” are used interchangeably; assume “sh” = “Bash.”
 
 As mentioned above, Windows computers have their own shell called *CMD.* *CMD* doesn’t speak *Bash*, and *Bash* doesn’t speak *CMD*. This because CMD is a proprietary shell: it generates file types that can only be read by Windows machines. Bash is an open-source shell, it generates file types that can be read by all machines (including Windows)
 
 **Why does this proprietary verses open source thing matter (keywords: version control and reproducible research)?**
 
 ### Common pitfalls you might encounter moving data/files/code developed in a Windows OS to a Linux OS (like our DIWA DataLab)
-These differences between bash and cmd means that Windows users might encounter some unexpected translation issues when they move files to a scientific computing. Common things to look out for can be found on our [windows-to-linux-cheatsheet](https://github.com/DigitalWaters-fi/community/blob/main/how-tos/introduction_to_bash/windows-to-linux-cheatsheet.md)
+These differences between Bash and cmd means that Windows users might encounter some unexpected translation issues when they move files to a scientific computing. Common things to look out for can be found on our [windows-to-linux-cheatsheet](https://github.com/DigitalWaters-fi/community/blob/main/how-tos/introduction_to_bash/windows-to-linux-cheatsheet.md)
 
 
 ## Part 2: getting to know your computer through terminal
@@ -61,7 +61,7 @@ If you type the following text into your terminal, it will tell you which shell 
 
 `echo $SHELL`
 
-*Figure 2.2: On the DIWA DataLab, our shell is *bash*
+*Figure 2.2: On the DIWA DataLab, our shell is *Bash*
 
 
 #### Check available storage"
@@ -105,9 +105,9 @@ Just like you can use your Start menu to browse software on Windows, you can lis
 ````
 dpkg -l
 `````
-Note: these are bash pacakges, not R or python packages. To see python packages, we would type`pip list` For pip installed packages, and `conda list` for conda installed packages. More on this later.
+Note: these are Bash pacakges, not R or python packages. To see python packages, we would type`pip list` For pip installed packages, and `conda list` for conda installed packages. More on this later.
 
-Running software from Terminal is very easy, all you have to do is type in the name of the software. For example, if we type `ipython`, we open ipython, a simple bash-based python IDE:
+Running software from Terminal is very easy, all you have to do is type in the name of the software. For example, if we type `ipython`, we open ipython, a simple Bash-based python IDE:
 
 *Figure 2.4: typing `ipython` opens up ipython software, so now I type commands in using the Python programming language, not Bash. To quit this python application and go back to Bash, I enter the python command `quit`.*
 
@@ -123,7 +123,7 @@ When you are entering commands into Terminal, the working directory is the folde
 I can also see my current working directory using the pwd (print working directory) command
 `pwd`
 
-In bash, we can use the mkdir (make directory) command to create new folders in our environment. So entereing the command:
+In Bash, we can use the mkdir (make directory) command to create new folders in our environment. So entereing the command:
 `mkdir one`
 in Terminal will create a new folder called "one" in your persistent or long-term storage. This folder called "one" will remain stored in your DIWA DataLab until you delete it: if you quit this server and log back in, it will still be available to you.
 
@@ -160,11 +160,11 @@ You'll notice that the filepath next to your curser has gone away. This is becau
 Name: Gandolf
 Age: 141
 Address: c/o the Shire
-Ctrl + D      # This last line closes and saves the file, bringing you back to bash
+Ctrl + D      # This last line closes and saves the file, bringing you back to Bash
 ````
 Using your left file menu, find and open the data.txt file.
 
-To open the notebook in Terminal, type `cat data.txt`. To exit the text file and go back to bash, `Ctrl+D`
+To open the notebook in Terminal, type `cat data.txt`. To exit the text file and go back to Bash, `Ctrl+D`
 
 #### Change directory shortcuts
 Changing directories is something that you will do often. Here are some common shortcuts to reduce your typing time:
@@ -176,7 +176,7 @@ cd –           #go back to your previous directory
 ````
 
 ## Part 3: a tragic interlude for justice
-Now we have gotten our start with bash commands, it's time to see how we can use them to automate big file management. To learn what you must do and what is at stake, enter the following command into your terminal:
+Now we have gotten our start with Bash commands, it's time to see how we can use them to automate big file management. To learn what you must do and what is at stake, enter the following command into your terminal:
 
 ````
 cd ~                                              # make sure you are in your home directory
