@@ -1,2 +1,55 @@
 # Fork a GitHub repository and clone onto the VRE
 
+![](img/fork-and-clone/01-organizations.png)
+
+> Open the user menu in the upper right on GitHub, and navigate to your Organizations page
+
+![](img/fork-and-clone/02-diwa-org.png)
+
+> Select the `DigitalWaters-fi` organization
+
+![](img/fork-and-clone/03-repositories.png)
+
+> Navigate to the `Repositories` tab
+
+![](img/fork-and-clone/04-waterdig-repo.png)
+
+> Select the `WaterDig` repository
+
+![](img/fork-and-clone/05-fork.png)
+
+> Click the `Fork` button 
+
+![](img/fork-and-clone/06-confirm-fork.png)
+
+> Confirm your fork. You do not need to make any changes.
+
+![](img/fork-and-clone/07-check-fork.png)
+
+> You should now be in *your* fork of the repository! You can check in the upper left that you are in *your* account and no longer in DigitalWaters-fi
+
+![](img/fork-and-clone/11-launch.png)
+
+> Navigate to the DIWA VRE and launch a WaterDigitalization image
+
+![](img/fork-and-clone/12-copy-repo-url.png)
+
+> Copy the url for *your* fork. Make sure to select the correct type of authentication (HTTPS or SSH) to match the way you configured your account on the VRE before copying!
+
+![](img/fork-and-clone/13-clone.png)
+
+> Open a Terminal window in the VRE and clone your repository with the `git clone <url>` command, replacing `<url>` with the url you copied.
+
+![](img/fork-and-clone/14-modify-key-permissions.png)
+
+> Oops! Looks like your SSH key has insufficient permissions, and GitHub won't accept it as strong authentication! You'll need to use the `chmod` command to change the permissions
+
+Use the following command to change the permissions:
+
+```bash
+chmod 600 ~/.ssh/id_ed25519
+```
+
+![](img/fork-and-clone/15-clone-with-permissions.png)
+
+> Now, you can try cloning again and it should go through (provided your SSH setup was correct). TIP -- you can get that command back in the Terminal without needing to type it again by using the up arrow!
