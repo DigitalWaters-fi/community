@@ -39,7 +39,7 @@ Use the landing page to log in to the DIWA DataLab using your GitHub credentials
 
 Once you are in the DIWA DataLab, click "Launch My Server."
 
-Sometimes it is beneficial for users to have more than one server at a time (for example, if you are using the DIWA DataLab to teach a course, and want to experiment with student settings while you have the course running). Email [diwa-vre@lists.oulu.fi] if you need this service.
+Sometimes it is beneficial for users to have more than one server at a time (for example, if you are using the DIWA DataLab to teach a course, and want to experiment with student settings while you have the course running). Email diwa-vre@lists.oulu.fi if you need this service.
 
 ## Select an image
 Each one of the tiles viewable in your server represent an image: a virtual workspace in the cloud that includes an operating system and some software that we've selected because we think will be useful to you.
@@ -109,7 +109,9 @@ Once you are inside the Desktop application, your can select software using the 
 We welcome suggestions for new applications, software, or plugins to be included in our desktop images.
 
 ## Saving data and files
-To accomodate multi-software workflows, all files saved within a server are accessible across all images opened in that server. For example, if your workflow involves accessing a raw pointcloud file on Zenodo, cleaning it on CloudCompare, analyzing it in Python, and vizualizing it in QGIS, your end-to-end workflow will be supported in the DIWA DataLab. Please note that for the purposes of reproducibility, we encourage use of command line executable software whenever possible. In a notebook environment, your home directory is always home/jovyan or simply ~. In a desktop environmet,
+To accomodate multi-software workflows, all files saved within a server are accessible across all images opened in that server. For example, if your workflow involves accessing a raw pointcloud file on Zenodo, cleaning it on CloudCompare, analyzing it in Python, and vizualizing it in QGIS, your end-to-end workflow will be supported in the DIWA DataLab.
+
+Please note that deleting your server will delete all saved files and data, do this at your own risk.
 
 ## Syncing git with GitHub
 We encourage you to mirror all code with your personal GitHub repository, and to publish your entire DIWA DataLab image as supplementary material alongside any peer-reviewed publications. Future trainings will introduce our standard repository template to simplify the process of creating reproducible code to showcase your research, in compliance with open code and data standards of top-tier journals.
