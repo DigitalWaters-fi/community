@@ -54,8 +54,10 @@ Each one of the tiles viewable in your server represent an image: a virtual work
 **Wait, I don't see my software in any of these images...what do I do?**
 Reach out! We need to hear from you to learn more about your workflows. Please suggest software, packages, or any additional features you'd like to see hosted on the DIWA DataLab using GitHub [Discussions](https://github.com/orgs/DigitalWaters-fi/discussions/1), by raising an [Issue](https://github.com/DigitalWaters-fi/.github/issues), or by email: diwa-vre@lists.oulu.fi.
 
-## Instance image + size
+### Select instance size
 After you've selected the image (software and packages) you want to run on your server, you will see a drop down menu allowing you to pick an image **size**: how much CPU and RAM will be available to you. This allows you to scale up or down your computer power as needed. To conserve resources, please always selected the smallest effective size for your project. If you need more compute power than our current options indicate, email diwa-vre@oulu.fi with your GitHub username and allocation request, and we'll work to get that updated ASAP.
+<img width="1912" height="955" alt="image" src="https://github.com/user-attachments/assets/90abe74b-13fe-4406-94f7-8249f9fbd8d7" />
+
 
 ## Notebook images
 An interactive notebook (aka Jupyter Notebook or R Markdown) is a digital document that lets you combine text, code, and results in one place and immediately see the output of your work, richly formatted like a website. It’s called “interactive” because it is not just a pretty webpage, it is an integrated development environment (IDE) you can change the code or inputs and instantly run it to see updated results.
