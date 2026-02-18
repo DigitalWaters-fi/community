@@ -35,9 +35,11 @@ The DIWA DataLab is accessible via GitHub. To get access to the DIWA DataLab, cr
 
 # Features of the DIWA DataLab
 ## Launch page
-Use the landing page to log in to the DIWA DataLab using your GitHub credentials. Please note that we require users to have 2FA (two-factor authentication) set up on their GitHub account. If you aren't a member of the DigitalWaters-fi GitHub organization, use the "Sign up" form to request access. <img width="1911" height="901" alt="image" src="https://github.com/user-attachments/assets/2e9b5cde-c4aa-414d-ba23-3aba9b43386c" />
+Use the landing page to log in to the DIWA DataLab using your GitHub credentials. Please note that we require users to have 2FA (two-factor authentication) set up on their GitHub account. If you aren't a member of the DigitalWaters-fi GitHub organization, use the "Sign up" form to request access. <img width="1911" height="1022" alt="image" src="https://github.com/user-attachments/assets/a2542028-4ed0-4a6f-9679-9e107a3a1c1d" />
 
-Once you are in the DIWA DataLab, click "Launch My Server"
+Once you are in the DIWA DataLab, click "Launch My Server."
+
+Sometimes it is beneficial for users to have more than one server at a time (for example, if you are using the DIWA DataLab to teach a course, and want to experiment with student settings while you have the course running). Email [diwa-vre@lists.oulu.fi] if you need this service.
 
 ## Select an image
 Each one of the tiles viewable in your server represent an image: a virtual workspace in the cloud that includes an operating system and some software that we've selected because we think will be useful to you.
@@ -61,25 +63,63 @@ An interactive notebook (aka Jupyter Notebook or R Markdown) is a digital docume
 * **Markdown cells**: allow you to write and present formatted text and equations, embed URLs, videos, and images. This is a place to communicate your research and explain your code and results. Learn more about Markdown [here](https://www.markdownguide.org/)
 * **Code cells**: are where you write and execute code in either R, Python, or Julia. This is how you read data into your workspace, process data, train and run models, and prepare text-based figures visualizing results. Are you new to scientific computing? Learn the ropes in Python using [The Python Data Science Handbook by Jake VanderPlas](https://github.com/jakevdp/PythonDataScienceHandbook?tab=readme-ov-file)
 
-### Installing packages and libraries
-
-
 ### Managing environments and Kernels
 An **environment** is an isolated workspace with its own: software (R, Python) version, installed packages (and versions), and dependencies (and versions). Environments are an important part of reproducible scientific workflows, because they allow someone to run your code without having to install specific packages or manage dependency chain conflicts. As the libraries behind your research evolve and change, working in software environments will ensure that your code still runs in the future.
 
 We have provided you with a few environments that support many functions in geoscientific computing. If you install a package from within an environment, that package will be saved to your image, and you won't have to install it again.
 
-To open an environment from within your Jupyter Notebook interface, select the kernel in the upper right hand corner:
+To open an environment from within your Jupyter Notebook interface, select the kernel in the upper right hand corner, or using the main menu:
 
-Or using the main menu:
+<img width="1913" height="728" alt="image" src="https://github.com/user-attachments/assets/fa7d164b-8f6b-4e0c-a7ac-487341c3bcf7" />
 
 Learn more about managing environments, and making them discoverable as kernels in your notebook images, [here](https://github.com/DigitalWaters-fi/community/tree/main/how-tos/install-packages-guides)
+## Installing packages
+You can install packages either using bash commands in terminal, or using python magic in a cell within a notebook. 
+
+To open a terminal, in a notebook image select File > New > Terminal, or select the Terminal tile in the Launcher page.
+<img width="1913" height="985" alt="image" src="https://github.com/user-attachments/assets/7a852277-1344-4edc-8c7b-e0f9a849296c" />
+
+Once inside the terminal, activate your conda environment:
+```
+source activate myenv
+```
+Then use pip or conda to install the required package.
+```
+pip install mypackage
+```
+To install the package within a notebook, select the desired kernel, and use the ! before your code to execute bash commands:
+
+```
+!pip install mypackage
+```
 
 ## Desktop images
+We also have several desktop images that you can access within the DIWA DataLab. These images allow users to interact with software using a graphical user interface. Desktop images can be viewed under "Data Visualization and Processing Apps"
+<img width="1915" height="633" alt="image" src="https://github.com/user-attachments/assets/08aec748-14bf-4a6b-8419-6bacf1c90d03" />
+
+Once you have opened one of this images, select the "Desktop" option from the JupyterLab viewer:
+
+<img width="1527" height="945" alt="image" src="https://github.com/user-attachments/assets/c1925a4f-2082-42c5-a246-f3017cc9bd02" />
+
+Once you are inside the Desktop application, your can select software using the "Applications" menu in the upper right hand corner. Alternatively, you can search for applications using the "Applications finder" platform, which appears as a magnifying glass icon at the bottom of the screen:
+<img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/9c83ec66-3259-4ce5-86b4-59a944d7ecff" />
+
+We welcome suggestions for new applications, software, or plugins to be included in our desktop images.
+
 ## Saving data and files
+To accomodate multi-software workflows, all files saved within a server are accessible across all images opened in that server. For example, if your workflow involves accessing a raw pointcloud file on Zenodo, cleaning it on CloudCompare, analyzing it in Python, and vizualizing it in QGIS, your end-to-end workflow will be supported in the DIWA DataLab. Please note that for the purposes of reproducibility, we encourage use of command line executable software whenever possible. In a notebook environment, your home directory is always home/jovyan or simply ~. In a desktop environmet,
+
 ## Syncing git with GitHub
+We encourage you to mirror all code with your personal GitHub repository, and to publish your entire DIWA DataLab image as supplementary material alongside any peer-reviewed publications. Future trainings will introduce our standard repository template to simplify the process of creating reproducible code to showcase your research, in compliance with open code and data standards of top-tier journals.
+
+For full instructions on how to configure a connection to GitHub within your server, see our tutorial [here](https://github.com/DigitalWaters-fi/community/blob/main/how-tos/connect-vre-github/connect-vre-github.md)
+
 ## Reporting bugs
+The DIWA DataLab is brand new and currently in development. If you notice any issues, errors, or bugs, [please report an issue here](https://github.com/DigitalWaters-fi/.github/issues). If you need additional storage, computational power, or software, please email [diwa-vre@lists.oulu.fi] with details of your request. 
+
 ## Ask for help with research computing
+We are working hard to develop new features that will help accelerate research within the DIWA DataLab, including a domain-specailized chatbot (the DIWA ReChat) and access to federated data searches through the [AquaINFRA DDAS](https://aquainfra.dev.52north.org/search?searchterm=discharge&dataProvider=syke). In the meantime, get community support with your data access, processing, modelling, or visualization troubles using our moderate [GitHub discussion boards](https://github.com/orgs/DigitalWaters-fi/discussions) 
+
 ## Demo Video
 
 
