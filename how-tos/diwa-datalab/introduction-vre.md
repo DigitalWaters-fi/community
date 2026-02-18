@@ -23,12 +23,12 @@ A **Virtual Research Environment (VRE)** offers several clear advantages for the
 In short, a VRE is like having a **ready-to-use, secure, and sharable lab in the cloud**, designed to save time, improve collaboration, and make research more reproducible.
 
 ## Useful terms:
-1. Server – The “workspace” that runs for a user, letting them access tools, write documents, and run experiments. Think of it as a personal computer in the cloud. 
-2. Instance – A single active copy of that workspace. When you log in, an instance is created for you to work in. 
-3. Image – A pre-packaged setup that includes the operating system and any tools you need. It’s like a pre-configured computer you can start instantly.
-4. PVC (Persistent Volume Claim) – A way to save your files and data safely, even if the workspace is closed or restarted. It’s like a personal folder in the cloud. You have 500 GB of PVC with each server. Anything you save in your server will be available next time you log in, and these files can be accessed from any image.
-5. Software – The applications or programs available in the image, like data analysis tools, simulation software, or text editors. You can use the images that we provide, suggest new images for us to build, or upload your own.
-6. Packages – Extra add-ons or modules that expand what the software can do. For example, if the software is a drawing tool, packages might add new brushes or shapes. You can install your own packages into any image and they will be there for you next time you log in. Learn more about installing packages in the DIWA DataLab [here](https://github.com/DigitalWaters-fi/community/tree/main/how-tos/install-packages-guides)
+1. **Server** – The “workspace” that runs for a user, letting them access tools, write documents, and run experiments. Think of it as a personal computer in the cloud. 
+2. **Instance** – A single active copy of that workspace. When you log in, an instance is created for you to work in. 
+3. **Image** – A pre-packaged setup that includes the operating system and any tools you need. It’s like a pre-configured computer you can start instantly.
+4. **PVC (Persistent Volume Claim)** – A way to save your files and data safely, even if the workspace is closed or restarted. It’s like a personal folder in the cloud. You have 500 GB of PVC with each server. Anything you save in your server will be available next time you log in, and these files can be accessed from any image.
+5. **Software** – The applications or programs available in the image, like data analysis tools, simulation software, or text editors. You can use the images that we provide, suggest new images for us to build, or upload your own.
+6. **Packages** – A bundle of code that has been packaged for reuse, these are the work horses of the open science movement. Packages are code that you need to use but don't need to write, and contain extra add-ons or modules that expand what the software can do. You can install your own packages into any image and they will be there for you next time you log in. Learn more about installing packages in the DIWA DataLab [here](https://github.com/DigitalWaters-fi/community/tree/main/how-tos/install-packages-guides)
 
 # Signing up for the VRE
 The DIWA DataLab is accessible via GitHub. To get access to the DIWA DataLab, create a user account on GitHub.com, and request to join the DigitalWaters-fi GitHub organization [here](https://forms.office.com/Pages/ResponsePage.aspx?id=muScnwFRo0qMdQ1ZNa1lJWEtMFscU0JOr8HqIPYV7uJUN0xYMlpTMVBKOTI2MUVJOFpNMkZaNUdOSi4u). Detailed instructions on how to create a professional GitHub profile, and integrate these credentials into the DIWA DataLab, can be found [here](https://github.com/DigitalWaters-fi/community/tree/main/how-tos/connect-vre-github).
@@ -115,12 +115,12 @@ We encourage you to mirror all code with your personal GitHub repository, and to
 For full instructions on how to configure a connection to GitHub within your server, see our tutorial [here](https://github.com/DigitalWaters-fi/community/blob/main/how-tos/connect-vre-github/connect-vre-github.md)
 
 ## Reporting bugs
-The DIWA DataLab is brand new and currently in development. If you notice any issues, errors, or bugs, [please report an issue here](https://github.com/DigitalWaters-fi/.github/issues). If you need additional storage, computational power, or software, please email [diwa-vre@lists.oulu.fi] with details of your request. 
+The DIWA DataLab is brand new and currently in development. If you notice any issues, errors, or bugs, [please report an issue here](https://github.com/DigitalWaters-fi/.github/issues). If you need additional storage, computational power, or software, please email diwa-vre@lists.oulu.fi with details of your request. 
 
 ## Ask for help with research computing
 We are working hard to develop new features that will help accelerate research within the DIWA DataLab, including a domain-specailized chatbot (the DIWA ReChat) and access to federated data searches through the [AquaINFRA DDAS](https://aquainfra.dev.52north.org/search?searchterm=discharge&dataProvider=syke). In the meantime, get community support with your data access, processing, modelling, or visualization troubles using our moderate [GitHub discussion boards](https://github.com/orgs/DigitalWaters-fi/discussions) 
 
-## Demo Video
+
 
 
 
