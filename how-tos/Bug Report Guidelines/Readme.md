@@ -1,1 +1,86 @@
+# Bug Report Guidelines for VRE + Data Lake
 
+This page explains how to report bugs in the **VRE + Data Lake** platform to help the team track, prioritize, and fix issues efficiently.
+
+---
+
+## Before You Report
+
+1. Ensure you have access to the platform and a GitHub account.
+2. Search existing issues to avoid duplicates: [Open Issues](https://github.com/DigitalWaters-fi/.github/issues).
+
+---
+
+## How to Report a Bug
+
+Follow these steps when reporting a bug:
+
+### 1. Identify the Bug
+- Describe the unexpected behavior clearly.
+- Include screenshots or logs if possible.
+
+### 2. Check for Duplicates
+- Search existing issues on GitHub to see if the bug has already been reported.
+
+### 3. Fill Out the Bug Report Template
+
+**Template Example:**
+
+```markdown
+### Bug Title
+A short, descriptive title
+
+**Description:**
+Describe what happened and why it is a problem.
+
+**Steps to Reproduce:**
+1. Step one
+2. Step two
+3. Step three
+
+**Expected Result:**
+What you expected to happen.
+
+**Actual Result:**
+What actually happened.
+
+**Environment:**
+- Browser:
+- OS:
+- VRE version:
+- Data Lake version:
+
+**Attachments:**
+Attach screenshots, logs, or other files if applicable.
+```
+
+### 4. Submit the Bug
+- Go to the [GitHub New Issue Page](https://github.com/DigitalWaters-fi/.github/issues/new) and submit your bug report using the template above.
+- Make sure to fill out all required fields for faster resolution.
+
+---
+
+## Optional: Quick Reporting from VRE
+
+If available, click **"Report a Bug"** in the VRE interface to open a pre-filled GitHub issue template.
+
+---
+
+## Need Help?
+
+For urgent issues or questions about reporting bugs, contact [Team Contact or Email].
+
+---
+
+## Quick Link in README
+
+Add this to your `README.md` so users can easily find it:
+
+```markdown
+## Reporting Bugs
+Please see our [Bug Report Guidelines](./BUG_REPORT.md) to submit issues.
+```
+
+---
+
+*Thank you for helping improve VRE + Data Lake!*
