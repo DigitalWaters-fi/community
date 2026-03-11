@@ -114,6 +114,8 @@ pip install --upgrade pip
 
 ## Installing a Package System-Wide (Without an Environment)
 
+> **⚠️ Availability:** This installation method is only available on the **WaterDigitizationMethods** server image. It will not work on other server images.
+
 If you need to install a package outside of any environment (e.g., directly into your user space), use the `--user` flag:
 
 ```bash
