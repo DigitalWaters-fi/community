@@ -2,44 +2,57 @@
 
 This guide shows how to create a **persistent Conda environment** that survives **pod or server restarts**.
 
+> **Before you start:** decide on your own names for the two values marked below — then replace them consistently throughout every command.
+>
+> | Placeholder | What it is | Example values |
+> |---|---|---|
+> | `<ENV_NAME>` | Folder name for your conda environment | `datascience`, `nlp-env`, `torch39` |
+> | `<DISPLAY_NAME>` | Label shown in Jupyter's kernel picker | `Python (Data Science)`, `PyTorch 3.9` |
+>
+> Everything else (`/home/jovyan`, Python version) can also be changed to match your setup.
+
 ---
 
-## 1️⃣ Create a Persistent Directory for Conda Environments
+## 1. Create a Persistent Directory for Conda Environments
 
 ```bash
 mkdir -p /home/jovyan/conda-envs
 ```
+conda-envs is folder name can be anything.
 
-All new environments will live here and **persist across pod restarts**.
+All new environments will live here and **persist across pod restarts**. Run this once.
 
 ---
 
-## 2️⃣ Create the Environment
+## 2. Create the Environment
+
+Replace `<ENV_NAME>` with your chosen name and set the Python version you need:
 
 ```bash
-conda create -p /home/jovyan/conda-envs/myenv python=3.10 -y
+conda create -p /home/jovyan/conda-envs/<ENV_NAME> python=3.10 -y
 ```
 
-- `-p` specifies the **exact installation path**.
-- You can create multiple environments like:
+The `-p` flag specifies the **exact installation path**, keeping the environment on the persistent volume.
+
+You can create multiple environments side by side — just use a different `<ENV_NAME>` each time:
 
 ```
-/home/jovyan/conda-envs/myenv
-/home/jovyan/conda-envs/myenv2
-/home/jovyan/conda-envs/myenv3
+/home/jovyan/conda-envs/datascience
+/home/jovyan/conda-envs/nlp-env
+/home/jovyan/conda-envs/torch39
 ```
 
 ---
 
-## 3️⃣ Activate the Environment
+## 3. Activate the Environment
 
 ```bash
-source activate /home/jovyan/conda-envs/myenv
+source activate /home/jovyan/conda-envs/<ENV_NAME>
 ```
 
 ---
 
-## 4️⃣ Install `ipykernel`
+## 4. Install `ipykernel`
 
 ```bash
 conda install ipykernel -y
@@ -49,27 +62,28 @@ This allows the environment to appear as a **Jupyter kernel**.
 
 ---
 
-## 5️⃣ Register the Environment as a Jupyter Kernel (Persistent)
+## 5. Register as a Jupyter Kernel (Persistent)
 
+Replace both `<ENV_NAME>` and `<DISPLAY_NAME>`. The `--name` value must be a single word (no spaces); `--display-name` can be anything you like.
 
 ```bash
 python -m ipykernel install \
   --prefix=/home/jovyan/.local \
-  --name myenv \
-  --display-name "Python (myenv)"
+  --name <ENV_NAME> \
+  --display-name "<DISPLAY_NAME>"
 ```
 
-This creates the kernel specification at:
+The kernel spec is saved at:
 
 ```
-/home/jovyan/.local/share/jupyter/kernels/myenv
+/home/jovyan/.local/share/jupyter/kernels/<ENV_NAME>
 ```
 
-Since `/home/jovyan` is persistent, the kernel will **survive server restarts**.
+Because `/home/jovyan` is on a persistent volume, the kernel will **survive server restarts**.
 
 ---
 
-## 6️⃣ Verify Installation
+## 6. Verify Installation
 
 ```bash
 jupyter kernelspec list
@@ -79,8 +93,31 @@ Expected output:
 
 ```
 Available kernels:
-  python3      /opt/conda/share/jupyter/kernels/python3
-  myenv        /home/jovyan/.local/share/jupyter/kernels/myenv
+  python3       /opt/conda/share/jupyter/kernels/python3
+  <ENV_NAME>    /home/jovyan/.local/share/jupyter/kernels/<ENV_NAME>
+```
+
+---
+
+## Full Example
+
+Using `ENV_NAME=datascience` and `DISPLAY_NAME=Python (Data Science)`:
+
+```bash
+mkdir -p /home/jovyan/conda-envs
+
+conda create -p /home/jovyan/conda-envs/datascience python=3.10 -y
+
+source activate /home/jovyan/conda-envs/datascience
+
+conda install ipykernel -y
+
+python -m ipykernel install \
+  --prefix=/home/jovyan/.local \
+  --name datascience \
+  --display-name "Python (Data Science)"
+
+jupyter kernelspec list
 ```
 
 ---
