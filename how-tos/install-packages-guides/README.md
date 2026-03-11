@@ -112,6 +112,53 @@ pip install --upgrade pip
 
 ---
 
+## Installing a Package System-Wide (Without an Environment)
+
+If you need to install a package outside of any environment (e.g., directly into your user space), use the `--user` flag:
+
+```bash
+pip install --user cookiecutter
+```
+
+This installs the package to your personal user directory (e.g., `~/.local/lib/`). You can verify the installed location with:
+
+```bash
+which cookiecutter
+# Example output: /home/jovyan/.local/bin/cookiecutter
+```
+
+> **Note:** Packages installed with `--user` are available globally to your user account but are **not** isolated inside any Conda or venv environment. Prefer installing inside an activated environment when possible.
+
+---
+
+## Installing Packages Inside an Activated Environment (No `--user` Needed)
+
+When an environment is **active**, `pip install` installs directly into that environment. The `--user` flag is **not needed** and should be omitted:
+
+```bash
+conda activate myenv
+pip install cookiecutter
+```
+
+Or with venv:
+
+```bash
+source py-env/bin/activate
+pip install cookiecutter
+```
+
+Verify the package is installed in the correct environment:
+
+```bash
+which cookiecutter
+# Should point inside your env, e.g.:
+# /home/jovyan/.conda/envs/myenv/bin/cookiecutter
+```
+
+> **Tip:** Always activate your environment first. Using `--user` inside an active environment can cause packages to be installed in the wrong location, leading to import errors.
+
+---
+
 ## Python Virtual Environments (venv)
 
 Use venv if Conda is unavailable or not required.
@@ -160,10 +207,8 @@ pip install -r requirements.txt
 ```bash
 echo 'source /etc/profile.d/micromamba.sh' > ~/.bashrc
 source ~/.bashrc
-
 conda create -n ml-env python=3.10
 conda activate ml-env
-
 conda install numpy pandas scikit-learn
 pip install xgboost
 ```
@@ -190,9 +235,32 @@ pip install numpy pandas matplotlib
 
 ---
 
+## Example: Installing cookiecutter
+
+**Option 1 — Inside an activated Conda environment (recommended):**
+
+```bash
+conda activate myenv
+pip install cookiecutter
+which cookiecutter
+# /home/jovyan/.conda/envs/myenv/bin/cookiecutter
+```
+
+**Option 2 — User-wide install (no environment required):**
+
+```bash
+pip install --user cookiecutter
+which cookiecutter
+# /home/jovyan/.local/bin/cookiecutter
+```
+
+---
+
 ## Notes & Best Practices
 
 - Always activate an environment before installing packages
+- When an environment is active, use `pip install <package>` — **do not** add `--user`
+- Use `--user` only when installing outside any environment (system-wide user install)
 - Prefer Conda for scientific and data-science libraries
 - Use pip for packages not available in Conda
 - Do not install packages into the system Python
