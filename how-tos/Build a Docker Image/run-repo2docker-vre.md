@@ -70,16 +70,29 @@ Next, navigate to the repository you are working on in GitHub. You can create a 
 
 The secrets must be named EXACTLY `DOCKER_USERNAME` and `DOCKER_PASSWORD`.
 
-![](img/.png)
+![Add your DockerHub username s as a repository secret named DOCKER_USERNAME](img/.png)
 
-![](img/.png)
+![Add your DockerHub token as a repository secret named DOCKER_PASSWORD](img/.png)
 
-The secrets must be named EXACTLY `DOCKER_USERNAME` and `DOCKER_PASSWORD`.
+Check the names!
 
-![](img/.png)
+![Check the names!](img/.png)
 
 ## Build your environment
 
 Before you get started, make sure that you have put all your **configuration files** into your repository. That means environment.yml (conda) or requirements.txt (pip) for Python libraries, and install.R for R libraries. You can check out the [`repo2docker` documentation](https://repo2docker.readthedocs.io/en/latest/start/) for more information on other types of configurations.
 
+Extra configuration files will cause the build to take longer, so make sure you remove anything you don't need!
+
 ### Go to the Actions tab on GitHub
+
+> You may need to enable Actions depending on how you created your repository.
+
+![](img/.png)
+
+### Select the Build and Push Container workflow and run it.
+
+![](img/.png)
+
+## Try your environment on the VRE
+
