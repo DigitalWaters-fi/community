@@ -4,14 +4,82 @@
 
 In this tutorial, you will use the [`repo2docker` GitHub Action](https://github.com/jupyterhub/repo2docker-action/blob/master/README.md) to build a reproducible image, deploy it to to DockerHub, and the start up a container with your environment on the DIWA VRE.
 
-## 1. Set up your accounts
+## Set up your accounts
 
-You will need a [GitHub account](https://github.com/signup?source=login) if you don't have one already to complete this tutorial. You can then use that GitHub Account to create  a [DockerHub account](https://app.docker.com/signup), and a [DIWA VRE account](https://diwa-data-lab-vre.rahtiapp.fi/hub/login). You can use the GitHub Account to create both the DIWA VRE account and the DockerHub account.
+### Get started with DockerHub
 
-All prerequisites:
+You will need a **[GitHub account](https://github.com/signup?source=login)** linked to the DIWA VRE to complete this tutorial. You can then use that GitHub Account to create a **[DockerHub account](https://app.docker.com/signup)**.
 
-1. GitHub Account (with 2-Factor Authentication, added to the DigitalWaters-fi organization)
-2. A DIWA Data Lab (VRE) account
-3. A **DockerHub** account
+#### Go to [DockerHub](https://app.docker.com/signup) and select `Continue with Github`
 
+![Go to [DockerHub](https://app.docker.com/signup) and select `Continue with Github`](img/00-dockerhub.png)
 
+#### Authorize
+
+![](img/.png)
+
+#### Follow instruction to verify your email
+
+#### Check your work
+
+You should now see the DockerHub homepage.
+
+![](img/.png)
+
+### Give GitHub Actions access to push to DockerHub
+
+Images are a launchable record of all the setup steps needed for code to run. This is an important part of reproducibility, because it is difficult for someone else to create a computing environment that exactly meets the needs of your workflow. DockerHub lets you share images just like GitHub lets you share code, and GitHub Actions is useful for building images. All you need is to be able to upload your image once it is complete!
+
+#### Create a Personal access token on DockerHub
+
+##### Go to DockerHub account settings
+
+![](img/.png)
+
+##### Select `Personal access tokens`
+
+You may need to scroll down in the menu on the left.
+
+![Select `Personal access tokens`](img/.png)
+
+##### Select `Generate new token`
+
+![](img/.png)
+
+##### Add a description, click `Generate token`, select Read and Write permissions, and copy it
+
+![](img/.png)
+
+Make sure to copy!
+
+#### Add the PAT to GitHub
+
+##### Return to your GitHub repository
+
+Next, navigate to the repository you are working on in GitHub. You can create a DIWA VRE and `repo2docker`-compatible repository using our cookiecutter.
+
+##### Navigate to Settings
+
+![](img/.png)
+
+##### Select Actions Secrets
+
+![](img/.png)
+
+##### Add your DockerHub credentials as repository secrets
+
+The secrets must be named EXACTLY `DOCKER_USERNAME` and `DOCKER_PASSWORD`.
+
+![](img/.png)
+
+![](img/.png)
+
+The secrets must be named EXACTLY `DOCKER_USERNAME` and `DOCKER_PASSWORD`.
+
+![](img/.png)
+
+## Build your environment
+
+Before you get started, make sure that you have put all your **configuration files** into your repository. That means environment.yml (conda) or requirements.txt (pip) for Python libraries, and install.R for R libraries. You can check out the [`repo2docker` documentation](https://repo2docker.readthedocs.io/en/latest/start/) for more information on other types of configurations.
+
+### Go to the Actions tab on GitHub
