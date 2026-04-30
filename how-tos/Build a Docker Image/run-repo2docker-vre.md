@@ -16,7 +16,7 @@ You will need a **[GitHub account](https://github.com/signup?source=login)** lin
 
 #### Authorize
 
-![](img/.png)
+![](img/01-authorize.png)
 
 #### Follow instruction to verify your email
 
@@ -24,7 +24,7 @@ You will need a **[GitHub account](https://github.com/signup?source=login)** lin
 
 You should now see the DockerHub homepage.
 
-![](img/.png)
+![](img/03-docker-home.png)
 
 ### Give GitHub Actions access to push to DockerHub
 
@@ -34,21 +34,21 @@ Images are a launchable record of all the setup steps needed for code to run. Th
 
 ##### Go to DockerHub account settings
 
-![](img/.png)
+![](img/10-settings.png)
 
 ##### Select `Personal access tokens`
 
 You may need to scroll down in the menu on the left.
 
-![Select `Personal access tokens`](img/.png)
+![Select `Personal access tokens`](img/11-tokens.png)
 
 ##### Select `Generate new token`
 
-![](img/.png)
+![](img/12-create-token.png)
 
 ##### Add a description, click `Generate token`, select Read and Write permissions, and copy it
 
-![](img/.png)
+![](img/13-configure-token.png)
 
 Make sure to copy!
 
@@ -58,25 +58,27 @@ Make sure to copy!
 
 Next, navigate to the repository you are working on in GitHub. You can create a DIWA VRE and `repo2docker`-compatible repository using our cookiecutter.
 
+![](img/21-github-repo.png)
+
 ##### Navigate to Settings
 
-![](img/.png)
+![](img/22-settings.png)
 
 ##### Select Actions Secrets
 
-![](img/.png)
+![](img/23-new-secret.png)
 
 ##### Add your DockerHub credentials as repository secrets
 
 The secrets must be named EXACTLY `DOCKER_USERNAME` and `DOCKER_PASSWORD`.
 
-![Add your DockerHub username s as a repository secret named DOCKER_USERNAME](img/.png)
+![Add your DockerHub username s as a repository secret named DOCKER_USERNAME](img/24-user-secret.png)
 
-![Add your DockerHub token as a repository secret named DOCKER_PASSWORD](img/.png)
+![Add your DockerHub token as a repository secret named DOCKER_PASSWORD](img/25-pass-secret.png)
 
 Check the names!
 
-![Check the names!](img/.png)
+![Check the names!](img/26-check-secrets.png)
 
 ## Build your environment
 
@@ -88,11 +90,11 @@ Extra configuration files will cause the build to take longer, so make sure you 
 
 > You may need to enable Actions depending on how you created your repository.
 
-![](img/.png)
+![](img/31-actions.png)
 
 ### Select the Build and Push Container workflow and run it.
 
-![](img/.png)
+![](img/32-build-container.png)
 
 ## Try your environment on the VRE
 
