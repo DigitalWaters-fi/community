@@ -2,13 +2,21 @@
 
 `repo2docker` is a utility maintained by Project Jupyter that creates stable Docker images based on [standard configuration files(https://repo2docker.readthedocs.io/en/latest/configuration/#config-files). It is suitable for Python, R, Python and R, and Julia environments, and can also install Linux packages if needed.
 
-In this tutorial, you will use the [`repo2docker` GitHub Action](https://github.com/jupyterhub/repo2docker-action/blob/master/README.md) to build a reproducible image, deploy it to to DockerHub, and the start up a container with your environment on the DIWA VRE.
+In this tutorial, you will:
+  1. Use `cookiecutter` to set up a repository that is ready to use for your DIWA VRE-compatible reproducible workflow
+  2. Use the [`repo2docker` GitHub Action](https://github.com/jupyterhub/repo2docker-action/blob/master/README.md) to build a reproducible image
+  3. Upload the image to DockerHub, and
+  4. Start up a container with your environment on the DIWA VRE
 
 ## Set up your accounts
 
+### Before you start, make sure you have a GitHub Account
+
+You will need a **[GitHub account](https://github.com/signup?source=login)** linked to the DIWA VRE to complete this tutorial. 
+
 ### Get started with DockerHub
 
-You will need a **[GitHub account](https://github.com/signup?source=login)** linked to the DIWA VRE to complete this tutorial. You can then use that GitHub Account to create a **[DockerHub account](https://app.docker.com/signup)**.
+You can then use that GitHub Account to create a **[DockerHub account](https://app.docker.com/signup)**.
 
 #### Go to [DockerHub](https://app.docker.com/signup) and select `Continue with Github`
 
