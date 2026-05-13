@@ -137,11 +137,13 @@ The project directory should also contain the DIWA cookiecutter template files:
 
 ### Sync your project with GitHub
 
-[Follow these instructions from GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github) to create a new GitHub repository out of your project directory.
+[Follow these instructions from GitHub](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-with-github-cli) to create a new GitHub repository out of your project directory.
 
-**Make sure that when you are linking your repository on the VRE to the remote origin on GitHub that you select SSH authentication!!!**
+> If you are using an older version of the  diwa_repo_cookiecutter image, then you will have a few extra steps. First, you will need to follow [the instructions for adding your repository from git](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
 
-![Select SSH authentication when linking to the remote origin.](img/35-select-ssh.png)
+> **Make sure that when you are linking your repository on the VRE to the remote origin on GitHub that you select SSH authentication!!!**
+
+> ![Select SSH authentication when linking to the remote origin.](img/35-select-ssh.png)
 
 You should now be able to see your project on GitHub:
 
